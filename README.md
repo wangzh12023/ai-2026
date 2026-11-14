@@ -51,3 +51,5 @@ npm run check:browser
 字标与 Blog 标题使用 Adobe [Source Serif 4](https://github.com/adobe-fonts/source-serif) Regular，OFL 许可，本地托管。仅参考 Anthropic 的编辑式排版取向，没有使用其专有字体或品牌资产。滚动和吸附沿用 [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) 与 Lenis 的现成能力。
 
 右上角提供语言和亮暗切换，偏好保存在本地；主题默认跟随系统。语言切换覆盖界面、事件标题摘要、日期和空白章节骨架，用户之后撰写的正文不会被自动改写或翻译。控件图标直接使用 [Lucide](https://github.com/lucide-icons/lucide)，原文件和 ISC / MIT 许可在 `public/ui/`。文章只保留字标作为首页入口，侧栏月份标题与子事件文字对齐。
+
+连续滚动回归检查：`npm run check:scroll`。覆盖惯性尾部限制、短暂停顿后的再次推进、立即反向，以及持续滚轮输入；全程不使用点击来恢复滚动。

@@ -125,18 +125,27 @@ function go(i,immediate=false){
 const mm=gsap.matchMedia();
 mm.add(wideQuery,()=>{
  // Preserve free scrubbing; only cap a single wheel gesture to adjacent nodes.
- let gestureActive=false,gestureAnchor=0,gestureTimer;
+ let gestureActive=false,gestureAnchor=0,gestureTimer,lastWheel=0,lastDelta=0,cappedSince=0;
  const scrollAt=i=>trigger.start+(lengths[i]-lengths[0])/(trackLength-lengths[0])*(trigger.end-trigger.start);
  lenis=new Lenis({lerp:.12,smoothWheel:true,wheelMultiplier:1,virtualScroll:data=>{
   if(!trigger||!data.event.type.includes('wheel')||data.event.ctrlKey||data.event.metaKey||Math.abs(data.deltaX)>Math.abs(data.deltaY))return;
-  if(!gestureActive){
-   gestureActive=true;gestureAnchor=current;
+  const now=performance.now(),delta=data.deltaY,magnitude=Math.abs(delta);
+  const reversed=delta*lastDelta<0;
+  const renewed=magnitude>Math.abs(lastDelta)*1.35&&magnitude-Math.abs(lastDelta)>12;
+  const sustained=cappedSince&&now-cappedSince>180&&current!==gestureAnchor&&Math.abs(lenis.animatedScroll-scrollAt(current))<8&&magnitude>=8&&Math.abs(magnitude-Math.abs(lastDelta))<.5;
+  // New pushes, reversals and deliberate steady wheel input re-arm without a click.
+  // A decaying touchpad tail keeps its original bound instead of skipping events.
+  if(!gestureActive||now-lastWheel>160||reversed||renewed||sustained||navigating){
+   gestureActive=true;gestureAnchor=current;cappedSince=0;
    const snapping=trigger.getTween(true);if(snapping){snapping.kill();lenis.reset();}
    if(navigating){navigating=false;lenis.reset();gsap.to($('.event-stage'),{opacity:1,duration:.2});}
   }
-  clearTimeout(gestureTimer);gestureTimer=setTimeout(()=>{gestureActive=false;},340);
+  lastWheel=now;lastDelta=delta;
+  clearTimeout(gestureTimer);gestureTimer=setTimeout(()=>{gestureActive=false;cappedSince=0;},340);
   const low=scrollAt(Math.max(0,gestureAnchor-1)),high=scrollAt(Math.min(events.length-1,gestureAnchor+1));
-  data.deltaY=clamp(lenis.targetScroll+data.deltaY,low,high)-lenis.targetScroll;
+  const proposed=lenis.targetScroll+delta,bounded=clamp(proposed,low,high);
+  if(Math.abs(proposed-bounded)>.01){if(!cappedSince)cappedSince=now;}else cappedSince=0;
+  data.deltaY=bounded-lenis.targetScroll;
   if(Math.abs(data.deltaY)<.01){if(data.event.cancelable)data.event.preventDefault();return false;}
  }});
  lenis.on('scroll',ScrollTrigger.update);
