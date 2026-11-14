@@ -5,6 +5,7 @@ import ArchiveNav from '../../components/ArchiveNav.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import events from '../../events.json';
 import '../../styles/article.css';
+import '../../styles/reported-article.css';
 export function getStaticPaths() { return events.map((event, index) => ({ params: { slug: event.id.toLowerCase() }, props: { event, index } })); }
 const { event, index } = Astro.props;
 const posts = import.meta.glob('../../content/posts/*.md', { eager: true });
@@ -18,8 +19,8 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
 <Header article/>
 <div class="article-layout">
 <aside id="archive-panel" class="archive-panel"><button id="archive-close" class="archive-close" data-i18n-aria="close" aria-label="关闭"><img class="ui-icon" src={`${baseUrl}ui/chevron-left.svg`} alt=""/></button><ArchiveNav current={event}/></aside>
-<main id="main" class="article-main">
-<header class="article-title"><time data-event-date={event.date}>{event.date}</time><h1 data-event-title={event.id}>{post.frontmatter.title || event.title}</h1><p class="article-deck" data-event-summary={event.id}>{event.summary}</p></header>
+<main id="main" class:list={['article-main', { 'article-reported': post.frontmatter.editorialStyle === 'reported' }]}>
+<header class="article-title"><time data-event-date={event.date}>{event.date}</time><h1 data-event-title={event.id}>{event.title}</h1><p class="article-deck" data-event-summary={event.id}>{event.summary}</p></header>
 <div class="inline-contents"><TableOfContents headings={headings} variant="inline"/></div>
 <article id="article" class="app-prose"><Content/></article>
 <nav class="post-pagination" data-i18n-aria="pagination" aria-label="相邻事件">{prev ? <a href={`${baseUrl}posts/${prev.id.toLowerCase()}/`}><img class="ui-icon" src={`${baseUrl}ui/chevron-left.svg`} alt=""/><strong data-event-title={prev.id}>{prev.title}</strong></a> : <span/>}{next && <a href={`${baseUrl}posts/${next.id.toLowerCase()}/`}><img class="ui-icon" src={`${baseUrl}ui/chevron-right.svg`} alt=""/><strong data-event-title={next.id}>{next.title}</strong></a>}</nav>

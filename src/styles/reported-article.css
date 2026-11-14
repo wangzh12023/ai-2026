@@ -1,0 +1,145 @@
+/* The reviewed articles use the site's existing palette and reading column. */
+.article-reported .article-title {
+  margin-bottom: 40px;
+}
+
+.article-reported .article-title h1 {
+  font-size: clamp(29px, 2.65vw, 38px);
+  font-weight: 550;
+  line-height: 1.5;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+
+.article-reported .article-deck {
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.article-reported .app-prose {
+  line-height: 1.95;
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+.article-reported .app-prose > h2 {
+  margin-top: 48px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 550;
+  line-height: 1.5;
+  letter-spacing: -.015em;
+}
+
+.article-reported .app-prose > h3 {
+  font-size: 19px;
+  font-weight: 550;
+  line-height: 1.6;
+}
+
+.article-reported .app-prose p {
+  margin-block-end: 0;
+}
+
+.article-reported .app-prose a[href^="https://"] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--blue) 35%, transparent);
+  text-underline-offset: .2em;
+  overflow-wrap: anywhere;
+}
+
+.article-reported .app-prose a[href^="https://"]:hover {
+  text-decoration-color: currentColor;
+}
+
+/* A small external-link glyph stays part of the sentence, without a citation panel. */
+.article-reported .app-prose a[href^="https://"]::after {
+  content: "" / "";
+  display: inline-block;
+  width: .7em;
+  height: .7em;
+  margin-inline-start: .2em;
+  vertical-align: .04em;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2h5v5M14 2 7 9M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.article-reported .app-prose figure {
+  margin: 32px 0;
+}
+
+.article-reported .app-prose figure.article-figure-portrait {
+  max-width: 380px;
+  margin-inline: auto;
+}
+
+.article-reported .app-prose figure > a {
+  display: block;
+}
+
+.article-reported .app-prose figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--divider);
+  background: #fff;
+}
+
+.article-reported .app-prose figcaption {
+  max-width: none;
+  margin-top: 12px;
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.85;
+  text-align: left;
+  color: var(--text-secondary);
+}
+
+.article-reported .app-prose blockquote {
+  margin-inline: 0;
+  padding-inline-start: 20px;
+  border-color: var(--divider);
+  font-style: normal;
+}
+
+.article-reported .app-prose :is(#参考资料, #references, #sources) {
+  padding-top: 30px;
+  border-top: 1px solid var(--divider);
+  font-size: 20px;
+}
+
+.article-reported .app-prose :is(#参考资料, #references, #sources) + ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.article-reported .app-prose :is(#参考资料, #references, #sources) + ul > li {
+  margin-top: 12px;
+}
+
+.article-reported .app-prose :is(#参考资料, #references, #sources) + ul a::before {
+  content: "" / "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-inline-end: 7px;
+  vertical-align: -.12em;
+  background: var(--text-secondary);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 1.5H3.5v13h9v-9L9 1.5Zm0 0v4h3.5M5.5 8h5m-5 3h5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.article-reported .app-prose :is(#参考资料, #references, #sources) + ul a[href*="github.com"]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 4-4 4 4 4m6-8 4 4-4 4M9 2 7 14'/%3E%3C/svg%3E");
+}
+
+.article-reported .app-prose :is(#参考资料, #references, #sources) + ul a[href*="reddit.com"]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 2.5h12v9H7l-4 3v-3H2zM5 6h6M5 8.5h4'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 850px) {
+  .article-reported .article-deck { font-size: 16px; }
+  .article-reported .app-prose > h2 { font-size: 22px; margin-top: 40px; }
+}

@@ -65,14 +65,15 @@ try{
  const last=page.locator('.toc-rail a').last();await last.click();await page.waitForTimeout(1400);
  assert.equal(await last.getAttribute('aria-current'),'location');
  assert.ok(await page.evaluate(()=>scrollY)>200);
- await page.locator('#back-top').click();await page.waitForTimeout(700);assert.ok(await page.evaluate(()=>scrollY)<100);
+ // Native smooth-scroll duration varies with the distance to the top.
+ await page.locator('#back-top').click();await page.waitForFunction(()=>scrollY<100,{},{timeout:5000});assert.ok(await page.evaluate(()=>scrollY)<100);
  await page.locator('.site-header .brand').click();await page.waitForURL(base+'/');await settle(claudeCodeCount);
  await page.locator('#scene-open').click();await page.waitForURL('**/posts/**');await page.goBack();await settle(claudeCodeCount);
  await page.locator('.header-link').click();await page.waitForURL('**/blog/');await page.waitForTimeout(400);
  assert.equal(await page.locator('.blog-post').count(),events.length);
  assert.equal(await page.locator('.blog-group').count(),11);
  await page.screenshot({path:path.join(artifacts,'blog.png')});
- await page.locator('[data-blog-month="11"]').click();await page.waitForTimeout(800);assert.equal(await page.locator('[data-blog-month="11"]').getAttribute('aria-current'),'location');
+ await page.locator('[data-blog-month="11"]').click();await page.waitForFunction(()=>document.querySelector('[data-blog-month="11"]')?.getAttribute('aria-current')==='location',{},{timeout:5000});assert.equal(await page.locator('[data-blog-month="11"]').getAttribute('aria-current'),'location');
  await page.locator('.blog-post').filter({hasText:'Claude Code'}).click();await page.waitForURL('**/posts/e-20260331-claude-code-leak/');
  await page.locator('.site-header .brand').click();await page.waitForURL(base+'/');await settle(claudeCodeCount);
  // Real static links, refreshed directly, including all draft pages.
@@ -100,6 +101,8 @@ try{
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.screenshot({path:path.join(artifacts,'dark-english-mobile.png')});
  await page.reload();assert.equal(await page.locator('html').getAttribute('lang'),'en');assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
+ // Finish the navigation transition before changing the browser's motion preference.
+ await page.evaluate(async()=>{await document.activeViewTransition?.finished;});
  await page.locator('#language-toggle').click();await page.locator('#theme-toggle').click();
  await page.emulateMedia({reducedMotion:'reduce'});await page.setViewportSize({width:1440,height:900});await page.goto(base);assert.equal(await page.locator('.tl-svg').isVisible(),false);assert.equal(await page.locator('.tl-li').count(),events.length);
  assert.deepEqual(errors,[]);
