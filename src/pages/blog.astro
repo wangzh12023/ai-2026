@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import events from '../events.json';
+import '../styles/blog.css';
+const months = [...new Set(events.map(e => e.date.slice(5,7)))];
+---
+<Base title="Blog · AI 2026" page="blog-page">
+<Header blog/>
+<main id="main" class="blog-layout">
+<nav class="blog-months" data-i18n-aria="months" aria-label="按月份浏览">{months.map(month => <a href={`#month-${month}`} data-blog-month={month}><i aria-hidden="true"></i><span data-month-text={month}>{month} 月</span></a>)}</nav>
+<div class="blog-content">
+<header class="blog-title"><h1>Blog</h1><span>2026</span></header>
+{months.map(month => <section class="blog-group" id={`month-${month}`} aria-labelledby={`month-title-${month}`}><h2 data-month-text={month} id={`month-title-${month}`}>{month} 月</h2><ol>{events.filter(e => e.date.slice(5,7) === month).map(e => <li><a class="blog-post" href={`/posts/${e.id.toLowerCase()}/`}><time data-event-date={e.date} data-compact-date>{e.date.slice(5)}</time><h3 data-event-title={e.id}>{e.title}</h3><span class="post-arrow" aria-hidden="true">↗</span></a></li>)}</ol></section>)}
+</div>
+</main>
+<script>
+const groups=[...document.querySelectorAll<HTMLElement>('.blog-group')];
+const links=[...document.querySelectorAll<HTMLAnchorElement>('[data-blog-month]')];
+let scheduled=false;
+function update(){let current=groups[0];for(const group of groups){if(group.getBoundingClientRect().top<innerHeight*.35)current=group;else break;}if(scrollY+innerHeight>=document.documentElement.scrollHeight-4)current=groups.at(-1)!;links.forEach(link=>{if(link.hash===`#${current.id}`)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});scheduled=false;}
+window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});
+links.forEach(link=>link.addEventListener('click',event=>{event.preventDefault();document.querySelector(link.hash)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});history.replaceState(null,'',link.hash);}));
+update();
+</script>
+</Base>

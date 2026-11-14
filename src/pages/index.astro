@@ -1,17 +1,17 @@
 ---
 import Base from "../layouts/Base.astro";
 import events from "../events.json";
+import Header from "../components/Header.astro";
 ---
 <Base>
 
-<header class="site-header"><a class="brand" href="#">AI <span>2026</span></a><div class="header-actions"><a class="github-link" href="https://github.com/wangzh12023/ai-2026" target="_blank" rel="noopener noreferrer" aria-label="GitHub 源码"><img src="/icons/siGithub.svg" alt="" width="20" height="20"/></a><button id="index-open">事件目录 <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button></div></header>
-<main id="main"><section id="journey" class="timeline" aria-label="2026 年主事件时间线"><div class="tl-pin">
+<Header home/>
+<main id="main"><section id="journey" class="timeline" data-i18n-aria="timeline" aria-label="2026 年主事件时间线"><div class="tl-pin">
 <svg class="tl-svg" viewBox="0 0 1440 900" aria-hidden="true"><g class="tl-cam"></g></svg>
-<div class="event-stage"><div class="event-identity" id="event-identity" aria-hidden="true"><img class="brand-mark" src="/icons/siApple.svg" alt=""/><img class="brand-mark" src="/icons/gemini-color.svg" alt=""/></div><div class="event-copy"><time id="scene-date">2026 / 01 / 12</time><h1 id="scene-title">{events[0].title}</h1><p id="scene-summary">{events[0].summary}</p><a class="event-link" id="scene-open" href="/posts/e-20260112-apple-google-gemini/">阅读事件 <span aria-hidden="true">↗</span></a></div></div>
-<nav class="month-nav" aria-label="按月份跳转"></nav>
-<div class="journey-bottom"><span id="current-count">01 / 24</span><div class="step-controls"><button id="previous" aria-label="上一个事件">↑</button><button id="next" aria-label="下一个事件">↓</button></div></div>
-<div class="tl-mobile"><ol class="tl-list">{events.map(e => <li class="tl-li" id={`mobile-${e.id}`}><time class="event-date">{e.date}</time><h2>{e.title}</h2><p>{e.summary}</p><a class="event-link" href={`/posts/${e.id.toLowerCase()}/`} data-event={e.index}>阅读事件 ↗</a></li>)}</ol></div>
+<div class="event-stage"><div class="event-identity" id="event-identity" aria-hidden="true"><img class="brand-mark" src="/icons/siApple.svg" alt=""/><img class="brand-mark" src="/icons/gemini-color.svg" alt=""/></div><div class="event-copy"><time id="scene-date">2026 / 01 / 12</time><h1 id="scene-title">{events[0].title}</h1><p id="scene-summary">{events[0].summary}</p><a class="event-link" id="scene-open" href="/posts/e-20260112-apple-google-gemini/"><span data-i18n="read">阅读事件</span> <span aria-hidden="true">↗</span></a></div></div>
+<nav class="month-nav" data-i18n-aria="months" aria-label="按月份跳转"></nav>
+<div class="journey-bottom"><span id="current-count">01 / 24</span><div class="step-controls"><button id="previous" data-i18n-aria="previous" aria-label="上一个事件">↑</button><button id="next" data-i18n-aria="next" aria-label="下一个事件">↓</button></div></div>
+<div class="tl-mobile"><ol class="tl-list">{events.map(e => <li class="tl-li" id={`mobile-${e.id}`}><time class="event-date" data-event-date={e.date}>{e.date}</time><h2 data-event-title={e.id}>{e.title}</h2><p data-event-summary={e.id}>{e.summary}</p><a class="event-link" href={`/posts/${e.id.toLowerCase()}/`} data-event={e.index}><span data-i18n="read">阅读事件</span> ↗</a></li>)}</ol></div>
 </div></section></main>
-<dialog id="index-dialog" aria-labelledby="index-title"><div class="dialog-top"><h2 id="index-title">2026 年事件</h2><button class="close" data-close aria-label="关闭事件索引">✕</button></div><p class="dialog-sub">24 个主事件</p><label class="search-label">查找事件<input id="search" type="search" placeholder="搜索标题、关键词或日期"></label><ol class="event-index"></ol></dialog>
 <script>import "../main.js";</script>
 </Base>

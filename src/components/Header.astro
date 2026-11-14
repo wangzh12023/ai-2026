@@ -1,0 +1,13 @@
+---
+const { home = false, article = false, blog = false } = Astro.props;
+---
+<header class:list={['site-header', !home && 'article-header']}>
+  <a class="brand" href={home ? '#' : '/'} data-home-return={article || undefined} data-i18n-aria="home" aria-label="时间线首页">AI <span>2026</span></a>
+  <nav class="header-actions" data-i18n-aria="navigation" aria-label="主导航">
+    <a class="header-link" href="/blog/" aria-current={blog ? 'page' : undefined}>Blog</a>
+    {article && <button id="archive-open" class="icon-button" aria-controls="archive-panel" aria-expanded="false" data-i18n-aria="archive" aria-label="月份与事件"><img class="ui-icon" src="/ui/list-tree.svg" alt=""/></button>}
+    <button id="language-toggle" class="icon-button" aria-label="Switch to English" aria-pressed="false"><img class="ui-icon" src="/ui/languages.svg" alt=""/></button>
+    <button id="theme-toggle" class="icon-button" aria-label="切换为深色" aria-pressed="false"><img class="ui-icon theme-moon" src="/ui/moon.svg" alt=""/><img class="ui-icon theme-sun" src="/ui/sun.svg" alt=""/></button>
+    <a class="github-link icon-button" href="https://github.com/wangzh12023/ai-2026" target="_blank" rel="noopener noreferrer" data-i18n-aria="github" aria-label="GitHub 源码"><img src="/icons/siGithub.svg" alt="" width="19" height="19"/></a>
+  </nav>
+</header>

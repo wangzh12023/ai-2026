@@ -18,7 +18,7 @@ const items = headings.filter(h => h.depth >= 2 && h.depth <= 3);
       class:list={["toc toc-rail", className]}
       aria-labelledby="toc-rail-label"
     >
-      <p id="toc-rail-label" class="toc-label small-caps">
+      <p id="toc-rail-label" class="toc-label small-caps" data-i18n="contents">
         本文目录
       </p>
       <ol>
@@ -33,7 +33,7 @@ const items = headings.filter(h => h.depth >= 2 && h.depth <= 3);
     </nav>
   ) : (
     <details class:list={["toc toc-inline", className]}>
-      <summary class="small-caps">本文目录</summary>
+      <summary class="small-caps" data-i18n="contents">本文目录</summary>
       <ol>
         {items.map(h => (
           <li data-depth={h.depth}>
