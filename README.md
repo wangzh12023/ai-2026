@@ -1,9 +1,9 @@
 # AI 2026 · 人工智能纪事
 
-> **2026 年人工智能重大事件全景回顾** · 竖向平滑轨迹交互与 34 篇深度事件档案
+> **2026 年人工智能重大事件全景回顾** · 竖向平滑轨迹交互与 31 篇深度事件档案
 
 [![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-43853d?style=flat-square&logo=githubpages&logoColor=white)](https://wangzh12023.github.io/ai-2026/)
-[![Events](https://img.shields.io/badge/Events-34%20Articles-blue?style=flat-square)](https://wangzh12023.github.io/ai-2026/blog/)
+[![Events](https://img.shields.io/badge/Events-31%20Articles-blue?style=flat-square)](https://wangzh12023.github.io/ai-2026/blog/)
 [![Astro](https://img.shields.io/badge/Astro-5.0-BC52EE?style=flat-square&logo=astro&logoColor=white)](https://astro.build)
 [![GSAP](https://img.shields.io/badge/GSAP-ScrollTrigger-88CE02?style=flat-square&logo=greensock&logoColor=white)](https://gsap.com)
 [![License](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](LICENSE)
@@ -26,7 +26,7 @@
 
 ## 项目特性
 
-- **34 篇高密度中文深度档案**：涵盖 Grok 深度伪造跨境封禁、苹果结盟 Gemini、OpenClaw 自托管 Agent 浪潮、Claude Code 50 万行工程泄露、DeepSeek-V4“梁圣”惊爆价风暴、月之暗面 2.8T 巨型开源、Claude 形式化费马大定理、币安 63 亿美元 AI 劫案、百度文心 5.5 Flash 开源大反击，以及黄仁勋突辞英伟达 CEO 等年度风云。
+- **31 篇高密度中文深度档案**：涵盖 Grok 深度伪造跨境封禁、苹果结盟 Gemini、OpenClaw 自托管 Agent 浪潮、Claude Code 50 万行工程泄露、DeepSeek-V4“梁圣”惊爆价风暴、月之暗面 2.8T 巨型开源、Claude 形式化费马大定理、SpaceX 约 600 亿美元收购 Cursor、币安 63 亿美元 AI 编码助手大劫案、百度文心 5.5 Flash 开源大反击，以及黄仁勋突辞英伟达 CEO 等年度风云。
 - **纯粹丝滑的阅读交互**：
   - **连续轨迹吸附**：基于 GSAP ScrollTrigger 与 Lenis 实现无阶跃滚轮衰减与单事件柔和吸附；
   - **沉浸式时间轴**：Google 四色渐变线条引路，双向联动左侧月份轴与中央焦点舞台；
@@ -59,13 +59,13 @@ npm run build
 ```text
 ai-2026/
 ├── src/
-│   ├── content/posts/      # 34 篇重大事件 Markdown 深度长文
+│   ├── content/posts/      # 31 篇重大事件 Markdown 深度长文
 │   ├── pages/
 │   │   ├── index.astro     # 竖向时间线 Landing Page
 │   │   ├── blog.astro      # 按月份编年排列的 Blog 聚合页
 │   │   └── posts/[slug].astro # 独立长文阅读页（双侧栏 + TOC）
 │   ├── components/         # 页面头部、月份归档与目录组件
-│   ├── events.json         # 34 个主事件元数据单一事实源
+│   ├── events.json         # 31 个主事件元数据单一事实源
 │   ├── locales/            # 中英文多语言对照词表
 │   └── main.js             # 时间线 GSAP 摄像机与滚动运动核心
 ├── public/
