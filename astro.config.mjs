@@ -1,2 +1,8 @@
 import { defineConfig } from 'astro/config';
-export default defineConfig({ devToolbar: { enabled: false }, output: 'static' });
+
+export default defineConfig({
+  site: 'https://wangzh12023.github.io',
+  base: process.env.BASE_PATH || '/',
+  devToolbar: { enabled: false },
+  output: 'static'
+});

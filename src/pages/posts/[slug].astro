@@ -12,17 +12,18 @@ const post = posts[`../../content/posts/${event.id.toLowerCase()}.md`] as any;
 const { Content } = post;
 const headings = post.getHeadings();
 const prev = events[index - 1], next = events[index + 1];
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 <Base title={`${event.title} · AI 2026`} description={event.summary} page="article-page">
 <Header article/>
 <div class="article-layout">
-<aside id="archive-panel" class="archive-panel"><button id="archive-close" class="archive-close" data-i18n-aria="close" aria-label="关闭"><img class="ui-icon" src="/ui/chevron-left.svg" alt=""/></button><ArchiveNav current={event}/></aside>
+<aside id="archive-panel" class="archive-panel"><button id="archive-close" class="archive-close" data-i18n-aria="close" aria-label="关闭"><img class="ui-icon" src={`${baseUrl}ui/chevron-left.svg`} alt=""/></button><ArchiveNav current={event}/></aside>
 <main id="main" class="article-main">
 <header class="article-title"><time data-event-date={event.date}>{event.date}</time><h1 data-event-title={event.id}>{post.frontmatter.title || event.title}</h1><p class="article-deck" data-event-summary={event.id}>{event.summary}</p></header>
 <div class="inline-contents"><TableOfContents headings={headings} variant="inline"/></div>
 <article id="article" class="app-prose"><Content/></article>
-<nav class="post-pagination" data-i18n-aria="pagination" aria-label="相邻事件">{prev ? <a href={`/posts/${prev.id.toLowerCase()}/`}><img class="ui-icon" src="/ui/chevron-left.svg" alt=""/><strong data-event-title={prev.id}>{prev.title}</strong></a> : <span/>}{next && <a href={`/posts/${next.id.toLowerCase()}/`}><img class="ui-icon" src="/ui/chevron-right.svg" alt=""/><strong data-event-title={next.id}>{next.title}</strong></a>}</nav>
-<footer class="article-footer"><a href="#main" id="back-top" class="icon-button" data-i18n-aria="backTop" aria-label="回到顶部" title="回到顶部"><img class="ui-icon" src="/ui/arrow-up.svg" alt=""/></a></footer>
+<nav class="post-pagination" data-i18n-aria="pagination" aria-label="相邻事件">{prev ? <a href={`${baseUrl}posts/${prev.id.toLowerCase()}/`}><img class="ui-icon" src={`${baseUrl}ui/chevron-left.svg`} alt=""/><strong data-event-title={prev.id}>{prev.title}</strong></a> : <span/>}{next && <a href={`${baseUrl}posts/${next.id.toLowerCase()}/`}><img class="ui-icon" src={`${baseUrl}ui/chevron-right.svg`} alt=""/><strong data-event-title={next.id}>{next.title}</strong></a>}</nav>
+<footer class="article-footer"><a href="#main" id="back-top" class="icon-button" data-i18n-aria="backTop" aria-label="回到顶部" title="回到顶部"><img class="ui-icon" src={`${baseUrl}ui/arrow-up.svg`} alt=""/></a></footer>
 </main>
 <aside class="article-toc"><TableOfContents headings={headings} variant="rail"/></aside>
 </div>

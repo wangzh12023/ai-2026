@@ -2,16 +2,17 @@
 import Base from "../layouts/Base.astro";
 import events from "../events.json";
 import Header from "../components/Header.astro";
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 <Base>
 
 <Header home/>
 <main id="main"><section id="journey" class="timeline" data-i18n-aria="timeline" aria-label="2026 年主事件时间线"><div class="tl-pin">
 <svg class="tl-svg" viewBox="0 0 1440 900" aria-hidden="true"><g class="tl-cam"></g></svg>
-<div class="event-stage"><div class="event-identity" id="event-identity" aria-hidden="true"><img class="brand-mark" src="/icons/siApple.svg" alt=""/><img class="brand-mark" src="/icons/gemini-color.svg" alt=""/></div><div class="event-copy"><time id="scene-date">2026 / 01 / 12</time><h1 id="scene-title">{events[0].title}</h1><p id="scene-summary">{events[0].summary}</p><a class="event-link" id="scene-open" href="/posts/e-20260112-apple-google-gemini/"><span data-i18n="read">阅读事件</span> <span aria-hidden="true">↗</span></a></div></div>
+<div class="event-stage"><div class="event-identity" id="event-identity" aria-hidden="true"><img class="brand-mark material-policy" src={`${baseUrl}icons/material-policy.svg`} alt=""/></div><div class="event-copy"><time id="scene-date">{events[0].date}</time><h1 id="scene-title">{events[0].title}</h1><p id="scene-summary">{events[0].summary}</p><a class="event-link" id="scene-open" href={`${baseUrl}posts/${events[0].id.toLowerCase()}/`}><span data-i18n="read">阅读事件</span> <span aria-hidden="true">↗</span></a></div></div>
 <nav class="month-nav" data-i18n-aria="months" aria-label="按月份跳转"></nav>
-<div class="journey-bottom"><span id="current-count">01 / 24</span><div class="step-controls"><button id="previous" data-i18n-aria="previous" aria-label="上一个事件">↑</button><button id="next" data-i18n-aria="next" aria-label="下一个事件">↓</button></div></div>
-<div class="tl-mobile"><ol class="tl-list">{events.map(e => <li class="tl-li" id={`mobile-${e.id}`}><time class="event-date" data-event-date={e.date}>{e.date}</time><h2 data-event-title={e.id}>{e.title}</h2><p data-event-summary={e.id}>{e.summary}</p><a class="event-link" href={`/posts/${e.id.toLowerCase()}/`} data-event={e.index}><span data-i18n="read">阅读事件</span> ↗</a></li>)}</ol></div>
+<div class="journey-bottom"><span id="current-count">{String(1).padStart(2,'0')} / {String(events.length).padStart(2,'0')}</span><div class="step-controls"><button id="previous" data-i18n-aria="previous" aria-label="上一个事件">↑</button><button id="next" data-i18n-aria="next" aria-label="下一个事件">↓</button></div></div>
+<div class="tl-mobile"><ol class="tl-list">{events.map(e => <li class="tl-li" id={`mobile-${e.id}`}><time class="event-date" data-event-date={e.date}>{e.date}</time><h2 data-event-title={e.id}>{e.title}</h2><p data-event-summary={e.id}>{e.summary}</p><a class="event-link" href={`${baseUrl}posts/${e.id.toLowerCase()}/`} data-event={e.index}><span data-i18n="read">阅读事件</span> ↗</a></li>)}</ol></div>
 </div></section></main>
 <script>import "../main.js";</script>
 </Base>

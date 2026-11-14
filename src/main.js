@@ -17,10 +17,11 @@ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const wideQuery='(min-width:900px) and (min-height:500px) and (prefers-reduced-motion:no-preference)';
 let trigger, lenis, current=0, navigating=false, cameraY=450, lockedUntil=0;
 const state={v:0};
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 // Unmodified brand assets from Lobe Icons and Simple Icons. No decorative artwork.
-const logoNames={0:['siApple','gemini-color'],1:['openclaw-official'],2:['zhipu-color','qwen-color','bytedance-color'],3:['anthropic'],4:['nvidia-color'],5:['claude-color'],6:['deepseek-color'],7:['sora-color'],8:['openai'],9:['openai'],10:['anthropic'],11:['material-policy'],12:['huggingface-color'],13:['kimi-color'],14:['europe'],15:['unitree-official'],16:['openai'],17:['gemini-color'],18:['openai'],19:['meta-color'],20:['deepseek-color'],21:['anthropic'],22:['baidu-color'],23:['nvidia-color']};
+const logoNames={0:['material-policy'],1:['siApple','gemini-color'],2:['openclaw-official'],3:['bytedance-color'],4:['zhipu-color','qwen-color','bytedance-color'],5:['openclaw-official'],6:['openai','openclaw-official'],7:['anthropic'],8:['meta-color','openclaw-official'],9:['nvidia-color'],10:['siApple','openclaw-official'],11:['nvidia-color'],12:['claude-color'],13:['deepseek-color'],14:['sora-color'],15:['openai'],16:['anthropic'],17:['material-policy'],18:['openai','huggingface-color'],19:['material-policy'],20:['kimi-color'],21:['bytedance-color'],22:['europe'],23:['claude-color'],24:['siGithub'],25:['unitree-official'],26:['meta-color','openai','anthropic'],27:['openai'],28:['gemini-color'],29:['openai'],30:['openai'],31:['material-policy'],32:['baidu-color'],33:['nvidia-color']};
 function identity(i){
- if(logoNames[i])return logoNames[i].map(name=>`<img src="/icons/${name}.svg" alt="" class="brand-mark ${name}"/>`).join('');
+ if(logoNames[i])return logoNames[i].map(name=>`<img src="${baseUrl}icons/${name}.svg" alt="" class="brand-mark ${name}"/>`).join('');
  return '';
 }
 const cam=$('.tl-cam');
@@ -72,7 +73,7 @@ function renderEvent(i){
  $('#scene-date').textContent=language()==='en'?dateText(e.date):e.date.replace('2026-','2026 / ').replace(/-(\d{2})$/,' / $1');
  const title=$('#scene-title');if(language()==='en')title.textContent=e.title;else title.replaceChildren(...[...new Intl.Segmenter('zh-CN',{granularity:'word'}).segment(e.title)].map(({segment})=>{const word=document.createElement('span');word.className='title-word';word.textContent=segment;return word;}));
  $('#scene-summary').textContent=e.summary;
- $('#scene-open').href=`/posts/${e.id.toLowerCase()}/`;
+ $('#scene-open').href=`${baseUrl}posts/${e.id.toLowerCase()}/`;
  $('#event-identity').innerHTML=identity(i);
  $('#current-count').textContent=String(i+1).padStart(2,'0')+' / '+events.length;
  $('#previous').disabled=i===0;$('#next').disabled=i===events.length-1;
@@ -166,7 +167,7 @@ rendered=-1;renderEvent(current);
 $('.month-nav').onclick=e=>{const b=e.target.closest('[data-month]');if(b)go(events.findIndex(ev=>Number(ev.date.slice(5,7))===Number(b.dataset.month)));};
 
 // Keep the exact timeline position when opening a standalone article.
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="/posts/"],a[href="/blog/"]');if(a)sessionStorage.setItem('timeline-position',JSON.stringify({index:Number(a.dataset.event??current),scroll:scrollY}));});
+document.addEventListener('click',e=>{const a=e.target.closest(`a[href^="${baseUrl}posts/"],a[href="${baseUrl}blog/"],a[href^="/posts/"],a[href="/blog/"]`);if(a)sessionStorage.setItem('timeline-position',JSON.stringify({index:Number(a.dataset.event??current),scroll:scrollY}));});
 window.addEventListener('pageshow',e=>{if(e.persisted){lenis?.start();ScrollTrigger.refresh();}});
 document.querySelectorAll('a[href="#journey"],a[href="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const y=a.getAttribute('href')==='#'?0:$('#journey').getBoundingClientRect().top+scrollY;if(lenis)lenis.scrollTo(y);else window.scrollTo({top:y,behavior:reduced?'instant':'smooth'});}));
 document.fonts.ready.then(()=>{
