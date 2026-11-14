@@ -1,0 +1,12 @@
+---
+import events from '../events.json';
+const { current } = Astro.props;
+const months = [...new Set(events.map(e => e.date.slice(5,7)))];
+---
+<nav class="archive-nav" aria-label="按时间浏览事件">
+<a class="archive-home" href="/" data-home-return>返回时间线</a>
+<div class="archive-months">{months.map(month => <details class="archive-month" open={current.date.slice(5,7) === month}>
+<summary><i aria-hidden="true"></i><span>{month} 月</span></summary>
+<ol>{events.filter(e => e.date.slice(5,7) === month).map(e => <li><a href={`/posts/${e.id.toLowerCase()}/`} aria-current={e.id === current.id ? 'page' : undefined}><time>{e.date.slice(8) || '上旬'}</time><span>{e.title}</span></a></li>)}</ol>
+</details>)}</div>
+</nav>

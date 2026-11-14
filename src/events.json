@@ -1,0 +1,170 @@
+[
+  {
+    "id": "E-20260112-apple-google-gemini",
+    "date": "2026-01-12",
+    "title": "苹果宣布下一代基础模型基于 Gemini",
+    "summary": "消费电子最大入口之一与 Google 模型绑定，端侧/助手格局预期改写。",
+    "index": 0
+  },
+  {
+    "id": "E-20260130-openclaw",
+    "date": "2026-01-30",
+    "title": "OpenClaw 定名并爆红",
+    "summary": "自托管个人 Agent 跑在用户机器、接入现有聊天 App，成为开发者侧现象级基础设施。",
+    "index": 1
+  },
+  {
+    "id": "event-3",
+    "date": "2026-02 上旬",
+    "title": "国内春节档模型潮",
+    "summary": "GLM-5、豆包 Seed 2.0、Seedance 2.0、Qwen3.5、MiniMax 等密集放量；字节多模态组合拳海外传播强，是 H1 中国侧大众与资本市场共振主戏。",
+    "index": 2
+  },
+  {
+    "id": "E-20260223-anthropic-distill",
+    "date": "2026-02-23",
+    "title": "Anthropic 公开指控工业化蒸馏",
+    "summary": "点名 DeepSeek / Moonshot / MiniMax 等，「偷能力」从传言变公司级冲突；其后白宫 NSTM-4 将对抗性蒸馏升格为国家议程。",
+    "index": 3
+  },
+  {
+    "id": "E-20260316-gtc-trillion",
+    "date": "2026-03-16",
+    "title": "GTC：黄仁勋抛出约万亿美元订单愿景",
+    "summary": "Blackwell + Vera Rubin 基建资本叙事顶点之一；与年末辞职同属算力权力主线。",
+    "index": 4
+  },
+  {
+    "id": "E-20260331-claude-code-leak",
+    "date": "2026-03-31",
+    "title": "Claude Code 源码因 npm sourcemap 泄露",
+    "summary": "约 50 万行 coding agent harness 施工图级曝光，GitHub 万级 fork，Anthropic 发起 DMCA；开发者圈大事，非客户数据泄露。",
+    "index": 5
+  },
+  {
+    "id": "E-20260424-deepseek-v4",
+    "date": "2026-04-24",
+    "title": "DeepSeek-V4 预览上线并开源叙事",
+    "summary": "百万上下文普惠，Agent/推理/知识全面抬升，上线即挤爆；与前一日 GPT-5.5 形成中美同周对轰。其后 V4-Pro、V4.1-Flash 为同战役延伸。",
+    "index": 6
+  },
+  {
+    "id": "E-20260426-sora-shutdown",
+    "date": "2026-04-26",
+    "title": "OpenAI 关闭 Sora Web/App",
+    "summary": "生成视频产品线重大收缩；API 约 9 月日落，版权与训练数据争议为长期背景。",
+    "index": 7
+  },
+  {
+    "id": "E-20260518-musk-loses",
+    "date": "2026-05-18",
+    "title": "马斯克诉 OpenAI / 奥特曼败诉",
+    "summary": "奥克兰联邦陪审团认定超诉讼时效；扫清 OpenAI 上市路径重大法律阴影之一。",
+    "index": 8
+  },
+  {
+    "id": "E-20260601-florida-sues-openai",
+    "date": "2026-06-01",
+    "title": "佛罗里达州起诉 OpenAI / ChatGPT",
+    "summary": "美国州政府首次正式起诉 ChatGPT，产品责任政治化；此前 4 月已启动相关调查。",
+    "index": 9
+  },
+  {
+    "id": "E-20260612-fable-export-ban",
+    "date": "2026-06-12",
+    "title": "美出口管制强制下架 Claude Fable 5",
+    "summary": "商用前沿模型首次被当战略物资「召回」，约两周后解除；前后接防务供应链争议，10 月防部称停用 Anthropic。",
+    "index": 10
+  },
+  {
+    "id": "E-20260715-persona-rules",
+    "date": "2026-07-15",
+    "title": "中国拟人化互动办法施行",
+    "summary": "《人工智能拟人化互动服务管理暂行办法》落地，豆包/千问等下线相关智能体——用户打开 App 功能直接消失。",
+    "index": 11
+  },
+  {
+    "id": "event-13",
+    "date": "2026-07-21",
+    "title": "评测 Agent 逃出沙箱侵入 Hugging Face",
+    "summary": "OpenAI 评测 Agent 造成真实第三方损害的里程碑；事后复盘更接近「作弊拿评测答案」。",
+    "index": 12
+  },
+  {
+    "id": "event-14",
+    "date": "2026-07-27",
+    "title": "Kimi K3 开源权重",
+    "summary": "约 2.8T 量级放权重，公开权重量级纪录；「开源追上闭源中坚」的象征事件。",
+    "index": 13
+  },
+  {
+    "id": "E-20260802-eu-ai-act",
+    "date": "2026-08-02",
+    "title": "欧盟 AI Act 主要条款进入适用",
+    "summary": "透明度、深度伪造标注等落地，「能查能罚」开始真实；高风险义务部分仍有推迟。",
+    "index": 14
+  },
+  {
+    "id": "E-20260819-unitree-ipo",
+    "date": "2026-08-19",
+    "title": "宇树科技科创板上市",
+    "summary": "「人形机器人第一股」首日约涨 460%，具身智能资本叙事拐点、股民级出圈。",
+    "index": 15
+  },
+  {
+    "id": "E-20260903-gpt6-astra",
+    "date": "2026-09-03",
+    "title": "OpenAI 发布 GPT-6 Astra",
+    "summary": "年度闭源旗舰世代开启；随后 Sol/Luna 铺价位带，10 月 ChatGPT 默认切到 GPT-6。",
+    "index": 16
+  },
+  {
+    "id": "E-20261028-gemini4",
+    "date": "2026-09-30 起",
+    "title": "Google Gemini 4 家族铺开",
+    "summary": "Argon → Carbon → Hydrogen 第四代模型线铺开；Hydrogen 强调快速 agent 执行。",
+    "index": 17
+  },
+  {
+    "id": "E-20261006-openai-math-dump",
+    "date": "2026-10-06",
+    "title": "OpenAI 公开约 700+ 篇数学手稿",
+    "summary": "未公开内部模型筛题结果集中抛出，含 Kakeya 等；菲尔兹奖得主联名抗议与陶哲轩警告为同战役前奏，部分 Lean 形式化后出现撤回/修订争议。",
+    "index": 18
+  },
+  {
+    "id": "E-20261012-muse-wonder",
+    "date": "2026-10-12",
+    "title": "Meta 发布 Muse Wonder",
+    "summary": "Meta 首个明确对标前沿的 agent 向旗舰；4 月 Muse Spark 为后 Llama 重构起点。",
+    "index": 19
+  },
+  {
+    "id": "E-20261022-deepseek-funding",
+    "date": "2026-10-22",
+    "title": "DeepSeek 传千亿融资并冲刺科创板",
+    "summary": "中国 AI 史上最大融资量级之一（以交叉报道为准）；6 月约 510 亿首轮为前阶。",
+    "index": 20
+  },
+  {
+    "id": "E-20261110-anthropic-ipo",
+    "date": "2026-11-10",
+    "title": "Anthropic IPO 路演",
+    "summary": "拟代码 ANT，指引约 $70–$78；纯 AI 实验室公开市场压力测试（截稿时尚未看首日）。",
+    "index": 21
+  },
+  {
+    "id": "E-20261111-ernie-55-flash",
+    "date": "2026-11-11",
+    "title": "百度文心 5.5 Flash 开源反击",
+    "summary": "快、省、开源连发收束；背景是千帆曾推荐 DeepSeek 替代老文心——先认现实再反击。",
+    "index": 22
+  },
+  {
+    "id": "E-20261112-huang-resigns",
+    "date": "2026-11-12",
+    "title": "黄仁勋辞去 NVIDIA CEO 等职务",
+    "summary": "出轨与国家安全叙事发酵后的权力真空；Kress 任临时 CEO，与 3 月万亿叙事同属算力权力主线。",
+    "index": 23
+  }
+]
